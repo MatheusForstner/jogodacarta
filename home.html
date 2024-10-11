@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Trunfo</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap");
+
+        body {
+        font-family: "Poppins", sans-serif;
+        min-height: 854px;
+        background-image: url("https://s4.gifyu.com/images/videotogif_2021.03.31_04.09.08.gif");
+        background-color: #000000;
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        padding-bottom: 20vh;
+        }
+
+        .family {
+        font-family: "Bungee Spice", cursive;
+        margin: 80px;
+        font-size: 50px;
+        }
+
+        .container {
+        text-align: center;
+        padding: 20px;
+        width: 550px;
+        margin: 0 auto;
+        }
+
+        .page-title {
+        color: #000000;
+        margin: 15px 0;
+        }
+        .primary-color {
+        color: #ffffff;
+        background-color: #000000;
+        padding: 10px;
+        }
+
+        .page-logo {
+        width: 200px;
+        }
+
+        button {
+        margin-top: 12px;
+        margin: 5px;
+        border-radius: 5px;
+        color: white;
+        background-color: #000000;
+        border: none;
+        padding: 12px 30px;
+        text-decoration: none;
+        transition: 400ms;
+        font-size: 15px;
+        }
+
+        button:hover {
+        background-color: #ffffff;
+        text-decoration: underline;
+        color: #000000;
+        }
+
+        h2 {
+        color: white;
+        }
+
+        #carta-jogador h3 {
+        text-align: center;
+        }
+
+        .carta-imagem {
+        border: 1px solid black;
+        height: 100px;
+        margin: 10px;
+        }
+
+        .carta-imagem img {
+        width: 100%;
+        height: 100%;
+        }
+
+        .carta-status {
+        height: 160px;
+        margin: 2rem;
+        color: white;
+        z-index: 2;
+        }
+
+        .carta-status input {
+        margin: 20px 10px;
+        }
+
+        .resultado-final {
+        color: white;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weigth: bolder;
+        padding: 1rem;
+        border-radius: 5px;
+        border: 1px solid #311b9250;
+        background-image: url("https://i.pinimg.com/originals/b4/8c/86/b48c8620e1509a897538b839cf9725ed.jpg");
+        }
+
+        .--spacing {
+        margin-left: 2.5rem;
+        }
+
+        form {
+        display: flex;
+        flex-direction: column;
+        }
+
+        .wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        }
+
+        .carta-subtitle {
+        z-index: 2;
+        position: absolute;
+        top: 18px;
+        left: 37px;
+        font-weight: 800;
+        text-transform: uppercase;
+        }
+
+        #cartas {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        }
+
+        .carta-status p {
+        margin-bottom: 2rem;
+        }
+
+        input {
+        appearance: none;
+
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+
+        border: 2px solid #999;
+        transition: 0.2s all linear;
+        margin-right: 5px;
+
+        position: relative;
+        top: 4px;
+        }
+
+        input:checked {
+        border: 6px solid black;
+        }
+
+        .card {
+        width: 220px;
+        height: 400px;
+        background-color: #000000;
+        background-size: 100%;
+        background-position: bottom;
+        padding: 10px;
+        border-radius: 7px;
+        margin: 0 -125px;
+        box-shadow: 5px 5px 10px #00000050;
+        }
+
+        .card-imagem {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border: 1px solid #f3e5f550;
+        border-radius: 5px;
+        }
+
+        .card-info {
+        width: 100%;
+        height: 210px;
+        background-color: #936300;
+        margin-top: 20px;
+        border: 1px solid #f3e5f550;
+        border-radius: 5px;
+        }
+
+        .info-titulo {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: white;
+        text-transform: uppercase;
+        font-size: 18px;
+        padding: 4px 0;
+        border-bottom: 1px solid #f3e5f550;
+        }
+
+        .opcoes {
+        width: 100%;
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+        color: white;
+        font-size: 15px;
+        }
+
+        .atributo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 25px;
+        padding: 0 10px;
+        }
+
+        .pontuacao {
+        background-color: #000000;
+        border-radius: 10px;
+        line-height: 50px;
+        margin: 5px;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-super-trunfo.png" class="page-logo" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Black_Clover_Logo.png" class="page-logo"><br>
+        <h1 class="page-title">
+          <span class="primary-color">SUPER</span> TRUNFO
+        </h1><br>
+        <button class="button-jogar" onclick="sortearCarta()" id="btnSortear">Sortear Carta</button>
+        <button class="button-jogar" type="button" id="btnJogar" onclick="jogar()" disabled="false">Jogar</button>
+        <button class="button-jogar" type="button" id="btnProxima" onclick="proximaRodada()" disabled="true">Próxima Rodada</button>
+        <div id="btnReiniciar"></div>
+        <div class="pontuacao" id="pontuacao"></div>
+        <form id="form">
+          <h2>Escolha o seu Atributo</h2>
+          <div class="wrapper">
+            <div id="carta-jogador"></div>
+            <div class="family">
+              <h1>VS</h1>
+            </div>
+            <div id="carta-maquina" class="carta"></div>
+          </div>
+          <div id="resultado"></div>
+        </form>
+      </div>
+
+      <script>
+        var carta1 = {
+            nome: "Noelle",
+            imagem:
+                "https://i.pinimg.com/originals/7d/5d/0e/7d5d0eecaf48ce2b36d9f8503d02dbe2.jpg",
+            atributos: {
+                HP: 9000,
+                Ataque: 1400,
+                Defesa: 300,
+                VelAtaque: 1200,
+                VelDefesa: 320,
+                Velociedade: 200
+            }
+            };
+
+            var carta2 = {
+            nome: "Mimosa",
+            imagem:
+                "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ccf51c45-cc6b-44d2-a04c-bb799d58af33/ddebu60-ab1caf8e-121f-43ef-9755-24eaafb9d919.jpg/v1/fill/w_1024,h_960,q_75,strp/mimosa_and_rhya_black_clover_by_slidsama_ddebu60-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTYwIiwicGF0aCI6IlwvZlwvY2NmNTFjNDUtY2M2Yi00NGQyLWEwNGMtYmI3OTlkNThhZjMzXC9kZGVidTYwLWFiMWNhZjhlLTEyMWYtNDNlZi05NzU1LTI0ZWFhZmI5ZDkxOS5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.AfzAvRXvNeNttx_RfFefM4yzDeyHTqQ2eZ62y4Pk9G8",
+            atributos: {
+                HP: 12000,
+                Ataque: 500,
+                Defesa: 620,
+                VelAtaque: 400,
+                VelDefesa: 460,
+                Velociedade: 120
+            }
+            };
+
+            var carta3 = {
+            nome: "Yuno",
+            imagem:
+                "https://designe.com.br/wp-content/uploads/2021/09/yuno-black-clover-capitulo-307.jpg",
+            atributos: {
+                HP: 8000,
+                Ataque: 1900,
+                Defesa: 320,
+                VelAtaque: 1500,
+                VelDefesa: 210,
+                Velociedade: 210
+            }
+            };
+
+            var carta4 = {
+            nome: "Asta",
+            imagem: "https://images5.alphacoders.com/106/1068538.jpg",
+            atributos: {
+                HP: 9000,
+                Ataque: 1800,
+                Defesa: 350,
+                VelAtaque: 1700,
+                VelDefesa: 210,
+                Velociedade: 180
+            }
+            };
+
+            var carta5 = {
+            nome: "Yami",
+            imagem:
+                "https://pm1.narvii.com/7203/9403ea20ce6a73fba67cee9aba7b0797ea48d355r1-1024-867v2_00.jpg",
+            atributos: {
+                HP: 8000,
+                Ataque: 1600,
+                Defesa: 310,
+                VelAtaque: 1800,
+                VelDefesa: 210,
+                Velociedade: 180
+            }
+            };
+
+            var carta6 = {
+            nome: "William Vangeance",
+            imagem: "https://images8.alphacoders.com/121/thumb-350-1211255.jpg",
+            atributos: {
+                HP: 11000,
+                Ataque: 800,
+                Defesa: 820,
+                VelAtaque: 700,
+                VelDefesa: 950,
+                Velociedade: 190
+            }
+            };
+
+            var cartasDoJogador = [];
+            var cartasDaMaquina = [];
+
+            var cartaMaquina;
+            var cartaJogador;
+            var cartas = [carta1, carta2, carta3, carta4, carta5, carta6];
+            // 0          1           2
+
+            function sortearCarta() {
+            var numeroCartaMaquina = parseInt(Math.random() * 6);
+            cartaMaquina = cartas[numeroCartaMaquina];
+
+            var numeroCartaJogador = parseInt(Math.random() * 6);
+            while (numeroCartaJogador == numeroCartaMaquina) {
+                numeroCartaJogador = parseInt(Math.random() * 6);
+            }
+            cartaJogador = cartas[numeroCartaJogador];
+            console.log(cartaJogador);
+
+            document.getElementById("btnSortear").disabled = true;
+            document.getElementById("btnJogar").disabled = false;
+            exibirCartaJogador();
+            }
+
+            function obtemAtributoSelecionado() {
+            var radioAtributo = document.getElementsByName("atributo");
+            for (var i = 0; i < radioAtributo.length; i++) {
+                if (radioAtributo[i].checked) {
+                return radioAtributo[i].value;
+                }
+            }
+            }
+
+            function jogar() {
+            console.log("chamou");
+            var atributoSelecionado = obtemAtributoSelecionado();
+            var divResultado = document.getElementById("resultado");
+
+            if (
+                cartaJogador.atributos[atributoSelecionado] >
+                cartaMaquina.atributos[atributoSelecionado]
+            ) {
+                htmlResultado = "<p class='resultado-final'>Venceu!</p>";
+                cartasDoJogador.push(cartaMaquina);
+            } else if (
+                cartaJogador.atributos[atributoSelecionado] <
+                cartaMaquina.atributos[atributoSelecionado]
+            ) {
+                htmlResultado = "<p class='resultado-final'>Perdeu</p>";
+                cartasDaMaquina.push(cartaJogador);
+            } else {
+                htmlResultado = "<p class='resultado-final'>Empatou!</p>";
+            }
+
+            if (cartasDaMaquina.length == 5 || cartasDoJogador.length == 5) {
+                document.getElementById("btnJogar").disabled = true;
+                document.getElementById("btnProxima").disabled = true;
+                document.getElementById("btnSortear").disabled = true;
+
+                if (cartasDaMaquina.length == 5) {
+                htmlResultado = `<p class='resultado-final'> Fim do Jogo! O Vencedor foi a máquina por ${cartasDaMaquina.length} a ${cartasDoJogador.length}.</p>`;
+                document.getElementById("btnReiniciar").innerHTML =
+                    "<button type='button' onclick='reiniciar()'>Reiniciar</button>";
+                } else {
+                htmlResultado = `<p class='resultado-final'>Fim do Jogo! O Vencedor foi você por ${cartasDoJogador.length} a ${cartasDaMaquina.length}.</p>`;
+                document.getElementById("btnReiniciar").innerHTML =
+                    "<button type='button' onclick='reiniciar()'>Reiniciar</button>";
+                }
+            } else {
+                document.getElementById("btnProxima").disabled = false;
+            }
+
+            divResultado.innerHTML = htmlResultado;
+
+            document.getElementById("btnJogar").disabled = true;
+            exibirCartaMaquina();
+            exibirPontuacao();
+            }
+
+            function exibirCartaJogador() {
+            var divCartaJogador = document.getElementById("carta-jogador");
+
+            divCartaJogador.innerHTML = `
+                <div class="card">
+                    <img class="card-imagem" src="${cartaJogador.imagem}" alt="">
+                    <div class="card-info">
+                    <p class="info-titulo">${cartaJogador.nome}</p>  
+                    <div id="opcoes-jogador" class="opcoes"></div>
+                </div>
+                </div>
+            `;
+            var opcoes = document.getElementById("opcoes-jogador");
+
+            var opcoesTexto = "";
+            for (var atributo in cartaJogador.atributos) {
+                opcoesTexto += `<div class="atributo"><span><input type="radio" name="atributo" value="${atributo}" checked> ${atributo}</span><span>${cartaJogador.atributos[atributo]}</span></div>`;
+            }
+            opcoes.innerHTML = opcoesTexto;
+            }
+
+            function exibirCartaMaquina() {
+            var divCartaMaquina = document.getElementById("carta-maquina");
+
+            divCartaMaquina.innerHTML = `
+            <div class="card">
+                    <img class="card-imagem" src="${cartaMaquina.imagem}" alt="">
+                    <div class="card-info">
+                    <p class="info-titulo">${cartaMaquina.nome}</p>  
+                    <div id="opcoes-maquina" class="opcoes"></div>
+                </div>
+                </div>
+            `;
+            var opcoes = document.getElementById("opcoes-maquina");
+
+            var opcoesTexto = "";
+
+            for (var atributo in cartaMaquina.atributos) {
+                opcoesTexto += `<div class="atributo"><span><p name="atributo">${atributo}</p></span><span>${cartaMaquina.atributos[atributo]}</span></div>`;
+            }
+
+            opcoes.innerHTML = opcoesTexto;
+            }
+
+            function proximaRodada() {
+            document.getElementById("btnSortear").disabled = false;
+            document.getElementById("btnProxima").disabled = true;
+            document.getElementById("resultado").innerHTML = "";
+            document.getElementById("carta-jogador").innerHTML = "";
+            document.getElementById("carta-maquina").innerHTML = "";
+            document.getElementById("carta-jogador").style.backgroundImage = "";
+            document.getElementById("carta-maquina").style.backgroundImage = "";
+
+            sortearCarta();
+            }
+
+            function exibirPontuacao() {
+            var pontuacao = document.getElementById("pontuacao");
+            pontuacao.innerHTML = `<span>Jogador - ${cartasDoJogador.length}</span> | <span>Máquina - ${cartasDaMaquina.length}</span>`;
+            }
+
+            function reiniciar() {
+            document.getElementById("btnSortear").disabled = false;
+            document.getElementById("btnProxima").disabled = true;
+            document.getElementById("resultado").innerHTML = "";
+            document.getElementById("pontuacao").innerHTML = "";
+            document.getElementById("carta-jogador").innerHTML = "";
+            document.getElementById("carta-maquina").innerHTML = "";
+            document.getElementById("carta-jogador").style.backgroundImage = "";
+            document.getElementById("carta-maquina").style.backgroundImage = "";
+
+            cartasDaMaquina = [];
+            cartasDoJogador = [];
+            }
+      </script>
+</body>
+</html>
